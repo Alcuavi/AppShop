@@ -2,7 +2,7 @@ const Bcrypt = require('bcrypt');
 
 class encryptService {
     static encryptPass(pass) {
-        return Bcrypt.hash.Sync(pass, 10);
+        return Bcrypt.hashSync(pass, 10);
     }
 }
 
