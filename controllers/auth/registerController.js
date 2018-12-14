@@ -1,5 +1,6 @@
 const Controller = require('../controller');
 const EncryptService = require('../../services/encryptService');
+const UsersModels = require('../../models/usersModels');
 
 class registerController extends Controller {
     constructor (req, res, next) {
@@ -15,6 +16,7 @@ class registerController extends Controller {
         let passEnc = EncryptService.encryptPass(pass);
         console.log("password ->" + pass, "Encryptado ->" + passEnc);
     }
+
 }
 
 module.exports = registerController;
