@@ -11,10 +11,18 @@ class registerController extends Controller {
         this.res.render('register', {title: "Página de registro"});
     }
     /* Creamos API para el registro*/
-    register(){
-        let pass = this.req.body.pass;
-        let passEnc = EncryptService.encryptPass(pass);
-        console.log("password ->" + pass, "Encryptado ->" + passEnc);
+    async register(){
+        let user = UsersModels.build({
+            user: this.req.body.username,
+            pass: EncryptService.encryptPass(this.req.body.pass)
+        });
+        try {
+            let result = await user.save();
+            console.log(result);
+        } catch (error) {
+
+        }
+
     }
 
 }
